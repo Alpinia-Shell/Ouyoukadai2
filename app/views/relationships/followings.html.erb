@@ -1,0 +1,20 @@
+<h1> Followings User </h1>
+<table>
+<% if current_user.following? %>
+  <% @users.each do |user| %>
+  <tr>
+  <th>image</th>
+  <th>name</th>
+  <th></th>
+  <th></th>
+  <th></th>
+  </tr>
+  <tr>
+  <td><%= user.get.profile_image %></td>
+  <td><%= user.name %></td>
+  <td>フォロー数<%= user.following.count %></td>
+  <td>フォロワー数<%= user.followers.count %></td>
+  </tr>
+  <% end %>
+<% end %>
+</table>
