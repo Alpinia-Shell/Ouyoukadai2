@@ -16,7 +16,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
-      redirect_to book_path(@book), notice: "You have created book successfully."
+      redirect_to request.referer, notice: "You have created book successfully."
     else
       @books = Book.all
       render 'index'
@@ -45,7 +45,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    redirect_to books_path
+    redirect_to request.referer
   end
 
   private
